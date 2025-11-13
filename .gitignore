@@ -1,0 +1,13 @@
+#node modules folder is too large to upload to github
+node_modules
+
+# I do not want to share my personal environment data
+.env
+
+.cache
+
+.vscode
+
+dist
+
+dev_data
