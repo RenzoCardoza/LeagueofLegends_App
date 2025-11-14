@@ -3,7 +3,7 @@ const baseController = {};
 
 baseController.buildHomePage = async function (req, res){
     const nav = await utilities.getNav();
-    //here will be the nav later on
+    //send the response to the client
     res.render('index', {
         title: "Home",
         nav: nav,
