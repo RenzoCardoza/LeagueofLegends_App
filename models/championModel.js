@@ -23,6 +23,11 @@ const championSchema = new mongoose.Schema({
         type: String,
         required: [true, 'blurb required']
     },
+    lore: {
+        type: String,
+        required: [true, 'lore required'],
+        trim: true
+    },
     info: {
         attack: {
             type: Number,

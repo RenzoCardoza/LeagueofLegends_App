@@ -29,7 +29,7 @@ championController.getChampions = async function (req, res){
 championController.getChampion = async function (req, res){
     try{
         const champion = await Champion.findOne({ name: req.params.name});
-
+        console.log(champion)
         res.status(200).json({
             status: 'success',
             message: champion
