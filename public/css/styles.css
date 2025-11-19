@@ -31,11 +31,11 @@ body{
 .navBar a li{
     list-style-type: none;
 }
-a {
+a.navigation {
   position: relative;
 }
 
-a::before {
+a.navigation::before {
     content: '';
     position: absolute;
     width: 100%;
@@ -49,12 +49,66 @@ a::before {
     transition: transform .3s ease-in-out;
   }
 
-a:hover::before {
+a.navigation:hover::before {
   transform-origin: left;
   transform: scaleX(1);
+}
+h1, h2{
+    font-family: "Cinzel Decorative", serif;
+    letter-spacing: .07em;
+    color: #FFC513;
 }
 footer{
     font-family: "Rajdhani", sans-serif;
     background-color: #1F1F1F;
     color: #E0E0E0;
+}
+/* CSS for the /champions main route */
+#ChampTitleMain{
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+.championGrid{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1em;
+    margin: 0 auto;
+    max-width: 90%;
+}
+.championCard{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+    border: #FFC513 solid 2px;
+    width: 13em;
+}
+.linkChampCard{
+    text-decoration: none;
+}
+.championCard img{
+    display: block;
+    width: 100%;
+    height: auto;
+}
+.championCard h4{
+    font-family: "Cinzel Decorative", serif;
+    letter-spacing: .07em;
+    color: #E0E0E0;
+    background-color: #1F1F1F;
+    margin: 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    border-top: #FFC513 solid 2px;
+}
+.championCard:hover{
+    border: 2px solid #1E90FF;
+    transition-duration: 1s;
+}
+.championCard:hover .champCardName{
+    border-top: 2px solid #1E90FF;
+    transition-duration: 1s;
 }

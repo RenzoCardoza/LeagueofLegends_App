@@ -25,7 +25,9 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // startup the database
-mongoose.connect(process.env.MONGODB_URL, {dbName: "leagueofLegends"}).then(() => {console.log('Connection successful!')}).catch(err =>console.log('Error while connecting the database'));
+mongoose.connect(process.env.MONGODB_URL, {dbName: "leagueofLegends"})
+  .then(() => {console.log('Connection successful!')})
+  .catch(err =>console.log('Error while connecting the database'));
 
 // routes
 app.use(static);

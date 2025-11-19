@@ -10,6 +10,7 @@ const utilities = require('../utilities/utilities');
 router.get('/', utilities.handleErrors(championController.getChampions));
 // route to post any new champion to the DB
 router.post('/', utilities.handleErrors(championController.insertChampion));
-// route 
+// route champion details
+router.get('/:id', utilities.handleErrors());
 
 module.exports = router;

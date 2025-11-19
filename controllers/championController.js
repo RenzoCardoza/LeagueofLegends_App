@@ -7,16 +7,21 @@ const championController = {};
 // GET ALL THE DATA FROM THE MODEL
 championController.getChampions = async function (req, res){
     try{
-        const champions = await Champion.find();
-
-        res.status(200).json({
-            status: "success",
-            results: champions.lenght,
-            data: {
-                champions
-            } 
-    }
-    )} catch (err) {
+        //get all the data from the champions and sort the array to appear alphabetically
+        let champions = await Champion.find();
+        champions.sort((a, b) => a.name.localeCompare(b.name));
+        //get the nav bar for the page
+        const nav = await utilities.getNav();
+        //get the grid element
+        const grid = await utilities.buildChampionGrid(champions);
+        //render the website to the endpoint
+        res.render('./champions/championList', {
+            title: 'Champion List',
+            nav: nav,
+            grid: grid,
+            errors: null,
+        });
+    } catch (err) {
         console.log(err);
     }
 };
