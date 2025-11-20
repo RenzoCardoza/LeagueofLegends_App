@@ -26,9 +26,10 @@ championController.getChampions = async function (req, res){
     }
 };
 
+//GET ALL DATA FROM 1 SPECIFIC CHAMPION
 championController.getChampion = async function (req, res){
     try{
-        const champion = await Champion.findOne({ name: req.params.name});
+        const champion = await Champion.findOne({name: req.params.name});
         console.log(champion)
         res.status(200).json({
             status: 'success',
