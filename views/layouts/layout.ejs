@@ -3,10 +3,15 @@
     <%- include('../partials/head') %>
 
     <body>
-        <%- include('../partials/header') %>
-
-        <%- body %>
+        <div>
+            <%- include('../partials/header') %>
+        
+            <main>    
+                <%- body %>
+            </main>
+            <%- include('../partials/footer') %>
+        </div>
     </body>
 
-    <%- include('../partials/footer') %>
+    
 </html>

@@ -1,5 +1,24 @@
 const mongoose = require('mongoose');
 
+const SkinSchema = new mongoose.Schema({
+    id: {
+        type: String,
+        required: [true, 'Id for skin required']
+        },
+    num: {
+        type: Number,
+        required: [true, 'Skin number required']
+    },
+    name: {
+        type: String,
+        required: [true, 'Name for skins required']
+    },
+    chromas: {
+        type: Boolean,
+        required: [true, 'chroma availables required']
+    }
+}, {_id: false});
+
 const championSchema = new mongoose.Schema({
     id: {
         type: String,
@@ -19,14 +38,34 @@ const championSchema = new mongoose.Schema({
         type: String,
         required: [true, 'A champion needs a title']
     },
-    blurb: {
-        type: String,
-        required: [true, 'blurb required']
+    image: {
+        full: { type: String },
+        sprite: { type: String },
+        group: { type: String },
+        x: { type: Number },
+        y: { type: Number },
+        w: { type: Number },
+        h: { type: Number }
+    },
+    skins: {
+        type: [SkinSchema],
+        default: []
     },
     lore: {
         type: String,
         required: [true, 'lore required'],
         trim: true
+    },
+    blurb: {
+        type: String,
+        required: [true, 'blurb required'],
+        trim: true
+    },
+    allytips: [String],
+    enemytips: [String],
+    tags: [String],
+    partype: { 
+        type: String 
     },
     info: {
         attack: {
@@ -45,21 +84,6 @@ const championSchema = new mongoose.Schema({
             type: Number,
             required: [true, 'Difficulty value is missing']
         }
-    },
-    image: {
-        full: { type: String },
-        sprite: { type: String },
-        group: { type: String },
-        x: { type: Number },
-        y: { type: Number },
-        w: { type: Number },
-        h: { type: Number }
-    },
-    tags: {
-        type: Array
-    },
-    partype: { 
-        type: String 
     },
     stats: {
         hp: {
@@ -138,8 +162,31 @@ const championSchema = new mongoose.Schema({
             type: Number, 
             required: [true, 'Set the attack speed value']
         }
+    },
+    spells: [Object],
+    passive: {
+        name: {
+            type: String,
+            required: [true, 'Passive name required']
+        },
+        description: {
+            type: String,
+            required: [true, 'description required']
+        },
+        image:{
+            full: { type: String },
+            sprite: { type: String },
+            group: { type: String },
+            x: { type: Number },
+            y: { type: Number },
+            w: { type: Number },
+            h: { type: Number }
+        }
+    },
+    recommended: {
+        type: Array,
+        default: []
     }
-
 });
 
 const Champion = mongoose.model('Champion', championSchema);

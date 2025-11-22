@@ -29,14 +29,27 @@ championController.getChampions = async function (req, res){
 //GET ALL DATA FROM 1 SPECIFIC CHAMPION
 championController.getChampion = async function (req, res){
     try{
-        const champion = await Champion.findOne({name: req.params.name});
-        console.log(champion)
-        res.status(200).json({
-            status: 'success',
-            message: champion
+        //get the name for the champion
+        const champName = req.params.name;
+        //get the nav bar for the page
+        const nav = await utilities.getNav();
+        //get data info
+        const champion = await Champion.findOne({name: champName});
+        // get the containers 
+        const championBanner = await utilities.buildChampionBanner(champion);
+        const championSpells = await utilities.buildChampionSpells(champion);
+        const championSkins = await utilities.buildChampionSkins(champion);
+        // render to the endpoint
+        res.render('./champions/championDetails', {
+            title: `Champion Details`,
+            nav: nav,
+            championBanner: championBanner,
+            championSpells: championSpells,
+            championSkins: championSkins,
+            errors: null,
         });
     } catch (err) {
-        
+        console.log(err);
     }
 }
 
@@ -47,13 +60,14 @@ championController.insertChampion = async function (req, res){
     try{
         //insert a new document into the database
         const newChampion = await Champion.create(req.body);
-        
+        // send status from the API
         res.status(200).json({
             status: "success",
             message: newChampion
         });
 
     } catch (err) {
+        //send status as the error
         res.status(400).json({
             status: "error",
             message: err

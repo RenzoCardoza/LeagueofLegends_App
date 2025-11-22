@@ -1,9 +1,16 @@
-<!-- Heading content -->
-<% if (title) { %>
-    <h1><%= title %></h1>
-    <% } else {
-      res.redirect('/')
-    } %>
-
 <!-- champion details view -->
-<%- championDetails -%>
+<%- championBanner -%>
+
+<div class="divisor-svg">
+	<img src="/images/site/arrow-down.svg" alt="divisor arrrow down">
+</div>
+
+<%- championSpells -%>
+
+<div class="divisor-svg">
+	<img src="/images/site/arrow-down.svg" alt="divisor arrrow down">
+</div>
+
+<%- championSkins -%>
+
+<script src="../../public/js/championSkins.js"></script>
