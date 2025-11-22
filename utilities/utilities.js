@@ -88,10 +88,10 @@ utilities.buildChampionSkins = async function (championData){
     //place the container for the template
     let skinsContainer = '<div class="skins-container">';
     skinsContainer += ` <h1>Available Skins</h1>`;
-    skinsContainer += ` <div class="images-container">`;
+    skinsContainer += ` <div class="images-container champ-carousel js-flickity" data-flickity='{ "wrapAround": true, "autoplay": 2500, "lazyload": true, "pageDots": true }'>`;
     if (championData.skins.length > 0){
         championData.skins.forEach(skin =>{
-            skinsContainer += ` <div class="skin">`;
+            skinsContainer += ` <div class="skin carousel-cell">`;
             skinsContainer += `     <img src="${splashArtUrl}${championData.name}_${skin.num}.jpg" alt="a Skin for ${championData.name}">`;
             skinsContainer += `     <div class="skinTitle">`;
             skinsContainer += `         <h4>${skin.name === "default" ? championData.name : skin.name}</h4>`;
