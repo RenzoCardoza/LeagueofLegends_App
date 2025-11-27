@@ -39,7 +39,8 @@ utilities.buildChampionBanner = async function(championData){
     //URL for the splash art of the champion
     const splashArtUrl = process.env.CHAMP_SPLASH_ART;
     //place the container for the html
-    let sectionContainer = `<div class="hero" style="--hero-img: url('${splashArtUrl}${championData.name}_0.jpg')">`;
+    let sectionContainer = `<div class="background-map" style="--main-background: url('/images/site/Runeterra_Terrain_map.png')"></div>`;
+    sectionContainer += `<div class="hero" style="--hero-img: url('${splashArtUrl}${championData.name}_0.jpg')">`;
     sectionContainer += '   <div class="hero-content">';
     sectionContainer += `       <h1>${championData.name}</h1>`;
     sectionContainer += `       <h4>${championData.title}</h4>`;
@@ -55,24 +56,36 @@ utilities.buildChampionSpells = async function(championData){
     //url for the images of the champion spells
     const spellArtUrl = process.env.CHAMP_ABILITY_ASSETS;
     const passiveArtUrl = process.env.CHAMP_PASSIVE_ASSETS;
+    const keybinds = ["Q", "W", "E", "R"];
     //HTML Template
     let spellsContainer = '<div class="spells-container">';
     spellsContainer += `    <h1>Abilities</h1>`;
+    spellsContainer += `    <div class="imgs-desc">`;
     spellsContainer += `    <div class="spellList">`;
-    spellsContainer += `        <div class="spell">`;
+    spellsContainer += `        <div class="spell" data-index="-1">`;
     spellsContainer += `            <img src="${passiveArtUrl}${championData.passive.image.full}" alt="Passive Sprite">`;
-    spellsContainer += `            <h4>${championData.passive.name}</h4>`;
-    spellsContainer += `            <p>${championData.passive.description}</p>`;
+    spellsContainer += `            <span class="keybind-label">Passive</span>`;
     spellsContainer += `        </div>`;
     if (championData.spells.length > 0){
-        championData.spells.forEach(spell =>{
-            spellsContainer += `    <div class="spell">`;
+        championData.spells.forEach((spell, index) =>{
+            spellsContainer += `    <div class="spell" data-index="${index}">`;
             spellsContainer += `        <img src="${spellArtUrl}${spell.image.full}" alt="Spell Sprite">`;
-            spellsContainer += `        <h4>${spell.name}</h4>`;
-            spellsContainer += `        <p>${spell.description}</p>`;
+            spellsContainer += `        <span class="keybind-label">${keybinds[index]}</span>`;
             spellsContainer += `    </div>`;
-            // spellsContainer += `    <p class="description">${spell.description}</p>`;
         });
+        spellsContainer += `    </div>`;
+        spellsContainer += `<div class="desc-container">`;
+        spellsContainer += `    <div class="spellDescription activeSpell" data-index="-1">
+                                    <h3 class="spellTitle">${championData.passive.name}</h3>
+                                    <span>${championData.passive.description}</span>
+                                </div>`;
+        championData.spells.forEach((spell, index) =>{
+            spellsContainer += `<div class="spellDescription" data-index="${index}">
+                                    <h3 class="spellTitle">${spell.name}</h3>
+                                    <span>${spell.description}</span>
+                                </div>`;
+        })
+        spellsContainer += `</div>`;
     } else {
         spellsContainer += '<p>We could not find any spells</p>';
     }
@@ -82,13 +95,20 @@ utilities.buildChampionSpells = async function(championData){
     return spellsContainer;
 }
 
+//Function that builds the skins containers
 utilities.buildChampionSkins = async function (championData){
     //URL for the splash art of the champion
     const splashArtUrl = process.env.CHAMP_SPLASH_ART;
     //place the container for the template
     let skinsContainer = '<div class="skins-container">';
     skinsContainer += ` <h1>Available Skins</h1>`;
-    skinsContainer += ` <div class="images-container champ-carousel js-flickity" data-flickity='{ "wrapAround": true, "autoplay": 2500, "lazyload": true, "pageDots": true }'>`;
+    skinsContainer += ` <div class="images-container champ-carousel js-flickity" data-flickity='{ 
+                            "cellAlign": "left",
+                            "wrapAround": true, 
+                            "autoplay": 2500, 
+                            "lazyload": true, 
+                            "pageDots": true 
+                        }'>`;
     if (championData.skins.length > 0){
         championData.skins.forEach(skin =>{
             skinsContainer += ` <div class="skin carousel-cell">`;
@@ -101,7 +121,6 @@ utilities.buildChampionSkins = async function (championData){
     } else {
         skinsContainer += `<p>There are no skins available for this Champion</p>`;
     }
-
     skinsContainer += `     </div>`;
     skinsContainer += `</div>`;
 

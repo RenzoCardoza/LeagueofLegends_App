@@ -118,8 +118,19 @@ footer{
     transition-duration: 1s;
 }
 /* champ details views */
-/* main{
-    background-color: #000000;
+main{
+    max-width: 1920px;
+    margin: 0 auto;
+}
+/* .background-map{
+    background-image: var(--main-background);
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
 } */
 .hero {
     position: relative;
@@ -134,7 +145,6 @@ footer{
 
     background-size: cover;
     background-position: center;
-    /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 }
 .hero-content {
     width: 50%;
@@ -158,11 +168,11 @@ footer{
 }
 .divisor-svg{
     text-align: center;
-    margin-top: 1em;
-    margin-bottom: 1em;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
 .divisor-svg img{
-    width: 5em;
+    width: 100%;
     height: auto;
 }
 .spells-container{
@@ -176,6 +186,14 @@ footer{
    font-size: 2.7em;
    margin-bottom: 1.5em;
 }
+.imgs-desc{
+    display: flex;
+    gap: 1em;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 1em;
+    margin-bottom: 2em;
+}
 .spellList{
     margin-top: 2em;
     margin-bottom: 2em;
@@ -188,20 +206,55 @@ footer{
 }
 .spell{
     padding: 1em;
+    min-width: 8em;
     max-width: 14em;
     display: flex;
     flex-direction: column;
     gap: 1em;
     align-items: center;
-    border: 1px solid #FFC513;
 }
-.spell h4{
+/* .spell h4{
     color: #FFC513;
     font-family: "Cinzel Decorative", serif;
+    font-size: .75em;
+} */
+.keybind-label {
+    display: block;
+    margin-top: 0.5em;
+    font-family: "Cinzel Decorative", serif;
+    font-size: 1.25rem;
+    color: #FFC513;
+    text-align: center;
 }
 .spell p{
     color: #E0E0E0;
     font-family: "Rajdhani", sans-serif;
+}
+.desc-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.spellDescription.activeSpell{
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+}
+.spellDescription{
+    display: none;
+    padding: 1.5em;
+    font-family: "Rajdhani", sans-serif;
+    color: #E0E0E0;
+    width: 32em;
+    height: 20em;
+    border: 1px solid #FFC513;
+    justify-content: center;
+    align-items: center;
+}
+.spellTitle {
+    font-size: 2.3rem;
+    margin-bottom: 1em;
+    color: #FFC513; /* Optional LoL-style gold title */
 }
 .skins-container{
     padding: 1em 2em;
@@ -211,27 +264,11 @@ footer{
     margin-bottom: 2em;
     font-size: 2.7em;
 }
-/* .images-container{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1em;
-    justify-content: center;
-}
-.skin{
-    width: 305px;
-    padding: 0;
-    border: 1px solid #FFC513;
-    text-align: center;
-    background-color: #1F1F1F;
-    display: flex;
-    flex-direction: column;
-    gap: 0;
-    justify-content: center;
-} */
 .champ-carousel{
     width: 90%;
     margin: 40px auto;
     text-align: center;
+    padding-left: 20px;
 }
 .carousel-cell{
     width: 548px;
