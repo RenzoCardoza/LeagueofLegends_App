@@ -6,13 +6,12 @@ const utilities = require('./utilities/utilities');
 const baseController = require('./controllers/baseController');
 const bodyParser = require('body-parser');
 const championRoutes = require('./routes/championRoutes');
+const contactRoutes = require('./routes/contactRoutes');
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
 
 // APP or Server to recieve requests
 const app = express();
-
-
 
 /* ***********************
  * View Engine and Templates
@@ -33,6 +32,7 @@ mongoose.connect(process.env.MONGODB_URL, {dbName: "leagueofLegends"})
 app.use(static);
 app.get('/', utilities.handleErrors(baseController.buildHomePage));
 app.use('/champions', championRoutes);
+app.use('/contact', contactRoutes);
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {
   next({status: 404, message: 'Sorry, we appear to have lost that page.'})

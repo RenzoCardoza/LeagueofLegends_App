@@ -107,12 +107,19 @@ utilities.buildChampionSkins = async function (championData){
                             "wrapAround": true, 
                             "autoplay": 2500, 
                             "lazyload": true, 
-                            "pageDots": true 
+                            "pageDots": true,
+                            "prevNextButtons": true,
+                            "draggable": ">1",
+                            "selectedAttraction": 0.02,
+                            "friction": 0.3
                         }'>`;
     if (championData.skins.length > 0){
         championData.skins.forEach(skin =>{
             skinsContainer += ` <div class="skin carousel-cell">`;
-            skinsContainer += `     <img src="${splashArtUrl}${championData.name}_${skin.num}.jpg" alt="a Skin for ${championData.name}">`;
+            skinsContainer += `     <img 
+                                        src="${splashArtUrl}${championData.name}_${skin.num}.jpg" 
+                                        alt="a Skin for ${championData.name}"
+                                    >`;
             skinsContainer += `     <div class="skinTitle">`;
             skinsContainer += `         <h4>${skin.name === "default" ? championData.name : skin.name}</h4>`;
             skinsContainer += `     </div>`;
