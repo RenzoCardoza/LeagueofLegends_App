@@ -22,6 +22,7 @@
     "express-session": "^1.18.2",
     "express-validator": "^7.3.0",
     "flickity": "^3.0.0",
+    "helmet": "^8.1.0",
     "mongodb": "^7.0.0",
     "mongoose": "^8.19.4"
   },

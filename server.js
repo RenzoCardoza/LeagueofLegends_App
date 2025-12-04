@@ -5,13 +5,27 @@ const static = require('./routes/static');
 const utilities = require('./utilities/utilities');
 const baseController = require('./controllers/baseController');
 const bodyParser = require('body-parser');
-const championRoutes = require('./routes/championRoutes');
-const contactRoutes = require('./routes/contactRoutes');
 const expressLayouts = require('express-ejs-layouts');
 const mongoose = require('mongoose');
+// const helmet = require('helmet');
+
+//route requirements
+const championRoutes = require('./routes/championRoutes');
+const contactRoutes = require('./routes/contactRoutes');
 
 // APP or Server to recieve requests
 const app = express();
+
+//helmet
+// app.use(helmet({contentSecurityPolicy: false}));
+app.use((req, res, next) => {
+  res.setHeader(
+    "Content-Security-Policy",
+    "default-src 'self'; img-src 'self' https://ddragon.leagueoflegends.com https://cdn.communitydragon.org data:; script-src 'self' https://unpkg.com; style-src 'self' https://unpkg.com https://fonts.googleapis.com 'unsafe-inline'; font-src 'self' https://fonts.gstatic.com;"
+  );
+  next();
+});
+
 
 /* ***********************
  * View Engine and Templates
