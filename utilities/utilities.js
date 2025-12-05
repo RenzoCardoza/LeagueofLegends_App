@@ -7,7 +7,7 @@ utilities.getNav = async function (req, res, next){
     let nav = '<ul class="navBar">';
     nav += '<a href="/" title="Home" class="navigation"><li>Home</li></a>';
     nav += '<a href="/champions/" title="Champions" class="navigation"><li>Champions</li></a>';
-    nav += '<a href="/account/" title="Login" class="navigation"><li>Login</li></a>';
+    nav += '<a href="/account/login" title="Login" class="navigation" id="loginBtn"><li>Login</li></a>';
     return nav;
 }
 
@@ -39,7 +39,7 @@ utilities.buildChampionBanner = async function(championData){
     //URL for the splash art of the champion
     const splashArtUrl = process.env.CHAMP_SPLASH_ART;
     //place the container for the html
-    let sectionContainer = `<div class="background-map" style="--main-background: url('/images/site/Runeterra_Terrain_map.png')"></div>`;
+    let sectionContainer = `<div class="background-map"></div>`;
     sectionContainer += `<div class="hero" style="--hero-img: url('${splashArtUrl}${championData.name}_0.jpg')">`;
     sectionContainer += '   <div class="hero-content">';
     sectionContainer += `       <h1>${championData.name}</h1>`;

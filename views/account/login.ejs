@@ -1,31 +1,21 @@
-<!-- title view -->
-<% if (title){ %>
-    <h1><%= title %></h1>
-<% } else {
-    res.redirect('/')
-} %>
+<div class="container-login" style="--login-background: url('/images/site/loginBackground.png')">
+    <form id="loginForm" action="/account/login" method="post">
+        <h1>Login to your Account</h1>
+        <fieldset id="emailAndpassword">
+            <div class="mail-pass">
+                <input type="email" name="account_email" required="required" id="email-input">
+                <span id="email-label">E-mail</span>
+                <i></i>
+            </div>
+            <div class="mail-pass">
+                <input type="password" name="account_password" required="required" id="password-input">
+                <span id="password-label">Password</span>
+                <i></i>
+            </div>
+            <input type="submit" class="submitBtn" value="Login">
+            <span id="no-account-msg">No account? <a href="#" title="Create your account now!">Sign-up</a></span>
+        </fieldset>
+    </form>
+</div>
 
-<section class="contactCard">
-    <h1>About Me</h1>
-    <div class="infos-container">
-        <div class="image-name">
-            <img src="/images/contact/my-photo-r-rsz.jpg" alt="a picture of me">
-            <h2>Renzo Cardoza</h2>
-        </div>
-        <div class="contact-infos">
-            <p>
-                I'm a junior backend developer focused on creating efficient, 
-                scalable solutions for web applications. Driven by curiosity 
-                and a dedication to continuous learning, I strive to grow 
-                through every project I work on.
-            </p>
-            <div class="contact-divisor"></div>
-            <p>
-                LinkedIn: Renzo Cardoza
-            </p>
-            <p>
-                E-mail: renzocardoza2@gmail.com
-            </p>
-        </div>
-    </div>
-</section>
+<script src="/js/loginScript.js"></script>
