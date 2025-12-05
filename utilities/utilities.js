@@ -7,7 +7,7 @@ utilities.getNav = async function (req, res, next){
     let nav = '<ul class="navBar">';
     nav += '<a href="/" title="Home" class="navigation"><li>Home</li></a>';
     nav += '<a href="/champions/" title="Champions" class="navigation"><li>Champions</li></a>';
-    nav += '<a href="/contact/" title="Contact Me" class="navigation"><li>Contact</li></a>';
+    nav += '<a href="/account/" title="Login" class="navigation"><li>Login</li></a>';
     return nav;
 }
 

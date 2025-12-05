@@ -1,12 +1,12 @@
 //require statements for the router
 const express = require('express');
 const router = new express.Router();
-const contactController = require('../controllers/contactController');
+const accountController = require('../controllers/accountController');
 const utilities = require('../utilities/utilities');
 
 //Set up routes for the page contact
 
-//main route 
-router.get('/', utilities.handleErrors());
+//login route
+router.get('/login', utilities.handleErrors(accountController.buildLogin));
 
 module.exports = router;

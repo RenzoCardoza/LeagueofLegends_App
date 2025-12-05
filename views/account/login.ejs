@@ -1,0 +1,31 @@
+<!-- title view -->
+<% if (title){ %>
+    <h1><%= title %></h1>
+<% } else {
+    res.redirect('/')
+} %>
+
+<section class="contactCard">
+    <h1>About Me</h1>
+    <div class="infos-container">
+        <div class="image-name">
+            <img src="/images/contact/my-photo-r-rsz.jpg" alt="a picture of me">
+            <h2>Renzo Cardoza</h2>
+        </div>
+        <div class="contact-infos">
+            <p>
+                I'm a junior backend developer focused on creating efficient, 
+                scalable solutions for web applications. Driven by curiosity 
+                and a dedication to continuous learning, I strive to grow 
+                through every project I work on.
+            </p>
+            <div class="contact-divisor"></div>
+            <p>
+                LinkedIn: Renzo Cardoza
+            </p>
+            <p>
+                E-mail: renzocardoza2@gmail.com
+            </p>
+        </div>
+    </div>
+</section>

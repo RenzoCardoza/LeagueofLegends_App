@@ -298,3 +298,28 @@ main{
     border-top: #FFC513 solid 1px;
     font-size: .8em;
 }
+.contactCard{
+    padding: 1em;
+    border: 1px solid #FFC513;
+    margin: 2em;
+}
+.infos-container{
+    display: flex;
+    gap: 3em;
+    justify-content: space-around;
+}
+.image-name{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+}
+.image-name img{
+    max-width: 350px;
+    border-radius: 2px;
+    border: 2px solid #FFC513;
+}
+.contact-infos p{
+    font-family: "Rajdhani", sans-serif;
+    color: #E0E0E0;
+}
