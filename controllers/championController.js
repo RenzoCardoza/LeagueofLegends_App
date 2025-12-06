@@ -30,11 +30,11 @@ championController.getChampions = async function (req, res){
 championController.getChampion = async function (req, res){
     try{
         //get the name for the champion
-        const champName = req.params.name;
+        const champId = req.params.id;
         //get the nav bar for the page
         const nav = await utilities.getNav();
         //get data info
-        const champion = await Champion.findOne({name: champName});
+        const champion = await Champion.findOne({id: champId});
         // get the containers 
         const championBanner = await utilities.buildChampionBanner(champion);
         const championSpells = await utilities.buildChampionSpells(champion);

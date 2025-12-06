@@ -11,6 +11,6 @@ router.get('/', utilities.handleErrors(championController.getChampions));
 // route to post any new champion to the DB
 router.post('/', utilities.handleErrors(championController.insertChampion));
 // route champion details
-router.get('/:name', utilities.handleErrors(championController.getChampion));
+router.get('/:id', utilities.handleErrors(championController.getChampion));
 
 module.exports = router;

@@ -40,7 +40,7 @@ utilities.buildChampionBanner = async function(championData){
     const splashArtUrl = process.env.CHAMP_SPLASH_ART;
     //place the container for the html
     let sectionContainer = `<div class="background-map"></div>`;
-    sectionContainer += `<div class="hero" style="--hero-img: url('${splashArtUrl}${championData.name}_0.jpg')">`;
+    sectionContainer += `<div class="hero" style="--hero-img: url('${splashArtUrl}${championData.id}_0.jpg')">`;
     sectionContainer += '   <div class="hero-content">';
     sectionContainer += `       <h1>${championData.name}</h1>`;
     sectionContainer += `       <h4>${championData.title}</h4>`;
@@ -117,7 +117,7 @@ utilities.buildChampionSkins = async function (championData){
         championData.skins.forEach(skin =>{
             skinsContainer += ` <div class="skin carousel-cell">`;
             skinsContainer += `     <img 
-                                        src="${splashArtUrl}${championData.name}_${skin.num}.jpg" 
+                                        src="${splashArtUrl}${championData.id}_${skin.num}.jpg" 
                                         alt="a Skin for ${championData.name}"
                                     >`;
             skinsContainer += `     <div class="skinTitle">`;
@@ -132,6 +132,25 @@ utilities.buildChampionSkins = async function (championData){
     skinsContainer += `</div>`;
 
     return skinsContainer;
+}
+
+utilities.buildPopularChampions = async function (championsData){
+    const champIcons = process.env.CHAMP_SQUARE_ASSETS
+    let container = `<div class="popularChamps">`;
+    if (championsData.length > 0){
+        championsData.forEach(champion =>{
+            container += `<a href="/champions/${champion.id}" class="homeLinksChamp">`;
+            container += `  <div class="champPic">`;
+            container += `      <img src="${champIcons}${champion.id}.png" alt="An Icon of ${champion.name}">`;
+            container += `      <span class="iconName">${champion.name}</span>`;
+            container += `  </div>`;
+            container += `</a>`;
+        });
+    } else {
+        container += `<p>This week's selection is under maintainence`;
+    }
+    container += `</div>`;
+    return container;
 }
 
 //solve any promises to handle errors

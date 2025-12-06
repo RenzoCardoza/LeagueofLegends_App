@@ -189,6 +189,15 @@ const championSchema = new mongoose.Schema({
     }
 });
 
+//add an aggregation method to the schema
+championSchema.statics.getRandomChampByTag = function (tag, size){
+    return this.aggregate([
+        {$match: {tags: tag}},
+        {$sample: {size: size}},
+        {$project: {name: 1, id: 1}}
+    ]);
+};
+
 const Champion = mongoose.model('Champion', championSchema);
 
 module.exports = Champion;
