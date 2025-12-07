@@ -187,6 +187,7 @@ input:hover {
     gap: 1em;
     margin: 0 auto;
     max-width: 90%;
+    margin-bottom: 3em;
 }
 .championCard{
     display: flex;
@@ -221,6 +222,12 @@ input:hover {
 .championCard:hover .champCardName{
     border-top: 2px solid #1E90FF;
     transition-duration: 1s;
+}
+.notice{
+    font-family: "Rajdhani", sans-serif;
+    line-height: 1.4em;
+    font-size: 1.3em;
+    color: #E0E0E0;
 }
 /* champ details views */
 main{
@@ -346,6 +353,34 @@ main{
     font-size: 2.3rem;
     margin-bottom: 1em;
     color: #FFC513; /* Optional LoL-style gold title */
+}
+.champStats{
+    background-color: #0A1428;
+    border: 2px solid #FFC513;
+    padding: 1em 2em;
+}
+.champStats h1{
+    font-size: 2.4em;
+}
+.entireStats{
+    display: flex;
+    gap: 3em;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 2em;
+}
+.entireStats h4{
+    font-family: "Cinzel Decorative", serif;
+    color: #FFC513;
+}
+.entireStats span{
+    color: #E0E0E0;
+}
+.baseStats, .detailStats{
+    padding: 1em 2em;
+    background-color: #0A1428;
+    border-radius: 9px;
+    border: 2px solid #FFC513;
 }
 .skins-container{
     padding: 1em 2em;

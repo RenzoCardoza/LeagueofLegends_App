@@ -1,14 +1,21 @@
 //get the search icon
 const inputElement = document.querySelector('.inputSearch');
+const iconSearch = document.querySelector('#searchIcon');
 
-function redirectToResult (input, icon) {
-    input.addEventListener
+//function to trigger the search once there is input
+function triggerSearch() {
+    const term = inputElement.value.trim();
+    if (term !== "") {
+        window.location.href = `/champions/search?name=${encodeURIComponent(term)}`;
+    }
 }
 
-inputElement.addEventListener('keypress', e =>{
+//enter a key search
+inputElement.addEventListener('keydown', e =>{
     if (e.key === 'Enter') {
-        const term = searchInput.value.trim();
-        window.location.href = `/champions/search?name=${encodeURIComponent(term)}`;
-        document.querySelector('.icon')
+        triggerSearch();
     }
 });
+
+//click the icon to trigger search
+iconSearch.addEventListener('click', triggerSearch());

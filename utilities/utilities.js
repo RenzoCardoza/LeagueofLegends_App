@@ -95,6 +95,30 @@ utilities.buildChampionSpells = async function(championData){
     return spellsContainer;
 }
 
+//function that builds the stats for the champion
+utilities.buildChampionStats = async function(championData){
+    let container = `<section class=champStats>`;
+    container += `  <h1>Champion Stats</h1>`;
+    container += `  <div class="entireStats">`;
+    container += `      <div class="baseStats">`;
+    container += `          <h4>Attack: <span>${championData.info.attack}</span></h4> `;
+    container += `          <h4>Defense: <span>${championData.info.defense}</span></h4>`;
+    container += `          <h4>Magic: <span>${championData.info.magic}</span></h4>`;
+    container += `          <h4>Difficulty: <span>${championData.info.difficulty}</span></h4>`;
+    container += `      </div>`;
+    container += `      <div class="detailStats">`;
+    container += `          <h4>Base HP: <span>${championData.stats.hp}</span></h4>`;
+    container += `          <h4>Base MP: <span>${championData.stats.mp}</span></h4>`;
+    container += `          <h4>Base Armor: <span>${championData.stats.armor}</span></h4>`;
+    container += `          <h4>Base Magic Resist: <span>${championData.stats.spellblock}</span></h4>`;
+    container += `          <h4>Base Attack Damage: <span>${championData.stats.attackdamage}</span></h4>`;
+    container += `          <h4>Attack Range: <span>${championData.stats.attackrange}</span></h4>`;
+    container += `      </div>`;
+    container += `</section>`;
+
+    return container;
+}
+
 //Function that builds the skins containers
 utilities.buildChampionSkins = async function (championData){
     //URL for the splash art of the champion

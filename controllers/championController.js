@@ -38,15 +38,16 @@ championController.getChampion = async function (req, res){
         // get the containers 
         const championBanner = await utilities.buildChampionBanner(champion);
         const championSpells = await utilities.buildChampionSpells(champion);
+        const championStats = await utilities.buildChampionStats(champion);
         const championSkins = await utilities.buildChampionSkins(champion);
         // render to the endpoint
         res.render('./champions/championDetails', {
             title: `Champion Details`,
-            nav: nav,
-            championBanner: championBanner,
-            championSpells: championSpells,
-            championStats: null,
-            championSkins: championSkins,
+            nav,
+            championBanner,
+            championSpells,
+            championStats,
+            championSkins,
             errors: null,
         });
     } catch (err) {
@@ -80,9 +81,7 @@ championController.findFromSearch = async function (req, res, next){
             errors: null
         });
     } catch (err) {
-        res.status(500).json({ 
-            message: "Internal server error" 
-        });
+        console.log(err);
     }
 }
 
