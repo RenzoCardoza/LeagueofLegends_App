@@ -45,11 +45,44 @@ championController.getChampion = async function (req, res){
             nav: nav,
             championBanner: championBanner,
             championSpells: championSpells,
+            championStats: null,
             championSkins: championSkins,
             errors: null,
         });
     } catch (err) {
         console.log(err);
+    }
+}
+
+//find a champion from a search engine
+championController.findFromSearch = async function (req, res, next){
+    try{
+        //get the nav bar for the page
+        const nav = await utilities.getNav();
+        //GET THE QUERY FILTER
+        let {name} = req.query;
+        const filter = {};
+        // IF THERE IS NO PARAMETER - MOVE ON
+        if (name) {
+            // case insensitive search
+            filter.name = { $regex: name, $options: "i"};
+        }
+        // get the list of champion that match the characters
+        const results = await Champion.find(filter);
+        if (results.length > 1) results.sort((a, b) => a.name.localeCompare(b.name));
+        //build the grid 
+        const grid = await utilities.buildChampionGrid(results);
+        //render the appropiate page
+        res.render('./champions/searchResults', {
+            title: 'Search Results',
+            nav,
+            grid,
+            errors: null
+        });
+    } catch (err) {
+        res.status(500).json({ 
+            message: "Internal server error" 
+        });
     }
 }
 
@@ -65,7 +98,6 @@ championController.insertChampion = async function (req, res){
             status: "success",
             message: newChampion
         });
-
     } catch (err) {
         //send status as the error
         res.status(400).json({

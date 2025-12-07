@@ -1,0 +1,9 @@
+<!-- Heading content -->
+<% if (title) { %>
+    <h1 id="ChampTitleMain"><%= title %></h1>
+    <% } else {
+      res.redirect('/')
+    } %>
+
+<!-- Grid -->
+<%- grid %>
