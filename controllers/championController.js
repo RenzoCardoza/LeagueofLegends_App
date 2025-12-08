@@ -106,4 +106,38 @@ championController.insertChampion = async function (req, res){
     }
 }
 
+//delete something from the db
+championController.deleteOneChampion = async function (req, res){
+    try{
+        //delete a document from the database
+        await Champion.findByIdAndDelete(req.params.id);
+        //send response 
+        res.status(204),json({
+            status: "success",
+            data: null
+        });
+    } catch (err){
+        res.status(400).json({
+            status: 'error',
+            message: err
+        });
+    }
+}
+
+//update info from existing champion
+championController.updateChampion = async function (req, res){
+    try {
+        //find and update a document
+        await Champion.findByIdAndUpdate(req.params.id, req.body, {
+            new: true,
+            runValidators: true
+        });
+    } catch (err) {
+        res.status(404).json({
+            status: 'error',
+            message: err
+        });
+    }
+}
+
 module.exports = championController;

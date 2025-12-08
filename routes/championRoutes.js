@@ -22,12 +22,21 @@ router.post(
     '/', 
     utilities.handleErrors(championController.insertChampion)
 );
-
+// route to update (patch)
+router.patch(
+    '/:id',
+    utilities.handleErrors(championController.updateChampion)
+);
 // route champion details
 router.get(
     '/:id', 
     utilities.handleErrors(championController.getChampion)
 );
+// route to delete
+router.delete(
+    '/:id',
+    utilities.handleErrors(championController.deleteOneChampion)
+)
 
 
 module.exports = router;
