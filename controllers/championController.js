@@ -25,7 +25,6 @@ championController.getChampions = async function (req, res){
         console.log(err);
     }
 };
-
 //GET ALL DATA FROM 1 SPECIFIC CHAMPION
 championController.getChampion = async function (req, res){
     try{
@@ -54,7 +53,6 @@ championController.getChampion = async function (req, res){
         console.log(err);
     }
 }
-
 //find a champion from a search engine
 championController.findFromSearch = async function (req, res, next){
     try{
@@ -84,7 +82,6 @@ championController.findFromSearch = async function (req, res, next){
         console.log(err);
     }
 }
-
 //POST SOMETHING TO THE DB
 // If the request has several champions in the request body then Create() method will save them 
 // to the DB
@@ -105,7 +102,6 @@ championController.insertChampion = async function (req, res){
         })
     }
 }
-
 //delete something from the db
 championController.deleteOneChampion = async function (req, res){
     try{
@@ -123,7 +119,6 @@ championController.deleteOneChampion = async function (req, res){
         });
     }
 }
-
 //update info from existing champion
 championController.updateChampion = async function (req, res){
     try {
